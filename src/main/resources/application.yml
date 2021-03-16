@@ -1,0 +1,29 @@
+micronaut:
+  application:
+    name: pixKeyManagerGrpc
+
+grpc:
+  server:
+    port: ${SERVER_PORT:50051}
+    keep-alive-time: 1h
+    max-inbound-message-size: 1024
+
+datasources:
+  default:
+    url: ${DB_URL:`jdbc:postgresql://localhost:5432/key_manager`}
+    driverClassName: org.postgresql.Driver
+    username: ${DATABASE_USERNAME:dev}
+    password: ${DATABASE_PASSWORD:dev}
+    dialect: POSTGRES
+
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl.auto: update
+        show_sql: true
+        format_sql: true
+
+itau:
+  contas:
+    url: ${ITAU_CONTAS_URL:`http://localhost:9091`}
