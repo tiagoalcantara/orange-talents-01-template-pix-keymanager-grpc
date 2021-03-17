@@ -1,6 +1,6 @@
 package br.com.zup.edu.pix.validacoes
 
-import br.com.zup.edu.pix.cadastrar.CadastrarChaveDTO
+import br.com.zup.edu.pix.dto.CadastrarChaveDTO
 import io.micronaut.core.annotation.AnnotationValue
 import io.micronaut.validation.validator.constraints.ConstraintValidator
 import io.micronaut.validation.validator.constraints.ConstraintValidatorContext

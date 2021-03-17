@@ -1,8 +1,7 @@
-package br.com.zup.edu.pix.cadastrar
+package br.com.zup.edu.pix.dto
 
-import br.com.zup.edu.pix.Chave
-import br.com.zup.edu.pix.TipoChave
-import br.com.zup.edu.pix.TipoConta
+import br.com.zup.edu.pix.model.Chave
+import br.com.zup.edu.pix.enums.TipoChave
 import br.com.zup.edu.pix.validacoes.ChavePix
 import br.com.zup.edu.pix.validacoes.ValidUUID
 import io.micronaut.core.annotation.Introspected
@@ -21,7 +20,7 @@ data class CadastrarChaveDTO(
     val tipoChave: TipoChave?,
 
     @field:NotNull
-    val tipoConta: TipoConta?,
+    val tipoConta: br.com.zup.edu.pix.enums.TipoConta?,
 
     @field:Size(max = 77)
     val chave: String?

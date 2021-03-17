@@ -1,4 +1,4 @@
-package br.com.zup.edu.pix
+package br.com.zup.edu.pix.enums
 
 import io.micronaut.validation.validator.constraints.EmailValidator
 

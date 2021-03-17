@@ -1,5 +1,7 @@
-package br.com.zup.edu.pix
+package br.com.zup.edu.pix.model
 
+import br.com.zup.edu.pix.enums.TipoChave
+import br.com.zup.edu.pix.enums.TipoConta
 import java.util.*
 import javax.persistence.*
 
