@@ -2,7 +2,6 @@ package br.com.zup.edu.compartilhado.grpc.handlers
 
 import io.grpc.Status
 import io.micronaut.context.MessageSource
-import java.lang.Exception
 import javax.inject.Inject
 import javax.inject.Singleton
 import javax.validation.ConstraintViolationException

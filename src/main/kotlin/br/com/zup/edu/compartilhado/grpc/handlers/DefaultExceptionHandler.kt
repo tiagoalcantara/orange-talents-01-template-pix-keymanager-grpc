@@ -1,9 +1,6 @@
 package br.com.zup.edu.compartilhado.grpc.handlers
 
 import io.grpc.Status
-import java.lang.Exception
-import java.lang.IllegalArgumentException
-import java.lang.IllegalStateException
 
 // Não quero que esse seja injetado na lista, por isso não será um bean
 class DefaultExceptionHandler : ExceptionHandler<Exception> {

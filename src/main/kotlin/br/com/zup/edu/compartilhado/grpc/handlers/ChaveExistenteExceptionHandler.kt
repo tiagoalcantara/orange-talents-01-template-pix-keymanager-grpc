@@ -2,7 +2,6 @@ package br.com.zup.edu.compartilhado.grpc.handlers
 
 import br.com.zup.edu.pix.exception.ChaveExistenteException
 import io.grpc.Status
-import java.lang.Exception
 import javax.inject.Singleton
 
 @Singleton

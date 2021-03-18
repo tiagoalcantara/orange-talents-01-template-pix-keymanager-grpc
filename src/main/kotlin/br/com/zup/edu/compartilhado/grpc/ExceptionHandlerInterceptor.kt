@@ -5,7 +5,6 @@ import io.grpc.stub.StreamObserver
 import io.micronaut.aop.MethodInterceptor
 import io.micronaut.aop.MethodInvocationContext
 import org.slf4j.LoggerFactory
-import java.lang.Exception
 import javax.inject.Inject
 import javax.inject.Singleton
 

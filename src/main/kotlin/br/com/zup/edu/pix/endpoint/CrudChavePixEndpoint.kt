@@ -6,9 +6,9 @@ import br.com.zup.edu.integracao.bcb.BancoCentralClient
 import br.com.zup.edu.pix.repository.ChaveRepository
 import br.com.zup.edu.pix.service.CadastrarChaveService
 import br.com.zup.edu.pix.service.RemoverChaveService
+import br.com.zup.edu.pix.utils.BuscarChaveResponseConverter
 import br.com.zup.edu.pix.utils.toDTO
 import br.com.zup.edu.pix.utils.toFiltro
-import com.google.protobuf.Descriptors
 import com.google.protobuf.Empty
 import io.grpc.stub.StreamObserver
 import org.slf4j.LoggerFactory
@@ -22,6 +22,9 @@ import javax.validation.Validator
 class ChavesGrpcServer(
     @Inject private val cadastrarChaveService: CadastrarChaveService,
     @Inject private val removerChaveService: RemoverChaveService,
+    @Inject private val validator: Validator,
+    @Inject private val chaveRepository: ChaveRepository,
+    @Inject private val bancoCentralClient: BancoCentralClient,
 ) : PixKeyManagerServiceGrpc.PixKeyManagerServiceImplBase() {
     private val logger = LoggerFactory.getLogger(ChavesGrpcServer::class.java)
 
@@ -35,6 +38,14 @@ class ChavesGrpcServer(
     override fun remover(request: RemoverChaveRequest, responseObserver: StreamObserver<Empty>) {
         removerChaveService.remover(request.idCliente, request.idChave)
         responseObserver.onNext(Empty.newBuilder().build())
+        responseObserver.onCompleted()
+    }
+
+    override fun buscar(request: BuscarChaveRequest, responseObserver: StreamObserver<BuscarChaveResponse>) {
+        val filtro = request.toFiltro(validator)
+        val resultado = filtro.filtrar(chaveRepository, bancoCentralClient)
+
+        responseObserver.onNext(BuscarChaveResponseConverter().converter(resultado))
         responseObserver.onCompleted()
     }
 }

@@ -4,7 +4,6 @@ import br.com.zup.edu.pix.enums.TipoChave
 import br.com.zup.edu.pix.enums.TipoConta
 import br.com.zup.edu.pix.model.Chave
 import br.com.zup.edu.pix.model.Conta
-import java.lang.IllegalArgumentException
 import java.time.LocalDateTime
 
 data class CreatePixKeyRequest(

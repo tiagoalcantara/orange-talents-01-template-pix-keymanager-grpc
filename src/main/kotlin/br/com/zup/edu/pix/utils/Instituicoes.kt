@@ -1,7 +1,5 @@
 package br.com.zup.edu.pix
 
-import java.lang.IllegalStateException
-
 /**
  * Representa todas as instituições financeiras passíveis de trabalhar com Pix
  * https://www.bcb.gov.br/pom/spb/estatistica/port/ASTR003.pdf (line 244 - 60701190 ITAÚ UNIBANCO S.A)

@@ -4,7 +4,6 @@ import io.grpc.Metadata
 import io.grpc.Status
 import io.grpc.StatusRuntimeException
 import io.grpc.protobuf.StatusProto
-import java.lang.Exception
 
 interface ExceptionHandler<T: Exception> {
     fun handle(e: T): StatusWithDetails

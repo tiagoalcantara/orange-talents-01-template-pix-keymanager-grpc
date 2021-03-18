@@ -7,7 +7,6 @@ import br.com.zup.edu.pix.repository.ChaveRepository
 import br.com.zup.edu.pix.validacoes.ValidUUID
 import io.micronaut.http.HttpStatus
 import io.micronaut.validation.Validated
-import java.lang.IllegalStateException
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton

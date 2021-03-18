@@ -2,7 +2,6 @@ package br.com.zup.edu.compartilhado.grpc
 
 import br.com.zup.edu.compartilhado.grpc.handlers.DefaultExceptionHandler
 import br.com.zup.edu.compartilhado.grpc.handlers.ExceptionHandler
-import java.lang.IllegalStateException
 import javax.inject.Inject
 import javax.inject.Singleton
 

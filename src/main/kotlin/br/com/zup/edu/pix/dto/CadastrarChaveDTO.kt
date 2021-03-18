@@ -1,7 +1,7 @@
 package br.com.zup.edu.pix.dto
 
-import br.com.zup.edu.pix.model.Chave
 import br.com.zup.edu.pix.enums.TipoChave
+import br.com.zup.edu.pix.model.Chave
 import br.com.zup.edu.pix.model.Conta
 import br.com.zup.edu.pix.validacoes.ChavePix
 import br.com.zup.edu.pix.validacoes.ValidUUID
