@@ -2,13 +2,15 @@ package br.com.zup.edu.pix.model
 
 import br.com.zup.edu.pix.enums.TipoChave
 import br.com.zup.edu.pix.enums.TipoConta
+import java.time.LocalDateTime
 import java.util.*
 import javax.persistence.*
+import javax.validation.Valid
 
 @Entity
 class Chave(
     @Column(nullable = false, unique = true)
-    val chave: String,
+    var chave: String,
     @Column(nullable = false)
     val idCliente: UUID,
     @Enumerated(value = EnumType.STRING)
@@ -17,8 +19,21 @@ class Chave(
     @Enumerated(value = EnumType.STRING)
     @Column(nullable = false)
     val tipoChave: TipoChave,
+
+    @field:Valid
+    @Embedded
+    val conta: Conta
 ) {
     @Id @GeneratedValue
     var id: UUID? = null
         private set
+
+    @Column(nullable = false)
+    val criadaEm: LocalDateTime = LocalDateTime.now()
+
+    fun atualizarChave(chave: String) {
+        if(tipoChave == TipoChave.ALEATORIA){
+            this.chave = chave
+        }
+    }
 }

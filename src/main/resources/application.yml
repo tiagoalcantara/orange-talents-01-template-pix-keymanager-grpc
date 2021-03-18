@@ -25,5 +25,7 @@ jpa:
         format_sql: true
 
 itau:
-  contas:
-    url: ${ITAU_CONTAS_URL:`http://localhost:9091`}
+  url: ${ITAU_CONTAS_URL:`http://localhost:9091`}
+
+bcb:
+  url: ${BCB_URL:`http://localhost:8082`}
