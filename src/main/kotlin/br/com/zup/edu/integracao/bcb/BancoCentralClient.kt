@@ -2,10 +2,7 @@ package br.com.zup.edu.integracao.bcb
 
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.MediaType.APPLICATION_XML
-import io.micronaut.http.annotation.Body
-import io.micronaut.http.annotation.Delete
-import io.micronaut.http.annotation.PathVariable
-import io.micronaut.http.annotation.Post
+import io.micronaut.http.annotation.*
 import io.micronaut.http.client.annotation.Client
 
 @Client("\${bcb.url}")
@@ -23,4 +20,10 @@ interface BancoCentralClient {
         produces = [APPLICATION_XML]
     )
     fun remover(@Body request: DeletePixKeyRequest, @PathVariable key: String): HttpResponse<Unit>
+
+    @Get(
+        value = "/api/v1/pix/keys/{key}",
+        consumes = [APPLICATION_XML]
+    )
+    fun buscarPorChave(@PathVariable key: String): HttpResponse<PixKeyDetailsResponse>
 }

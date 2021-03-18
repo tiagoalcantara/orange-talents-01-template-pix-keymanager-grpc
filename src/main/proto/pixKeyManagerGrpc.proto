@@ -6,16 +6,53 @@ option java_outer_classname = "PixKeyManagerGrpc";
 
 package br.com.zup.edu;
 import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
 
 service PixKeyManagerService {
-  rpc cadastrar (CadastrarChaveRequest) returns (CadastrarChaveResponse) {}
+  rpc cadastrar (CadastrarChaveRequest) returns (CadastrarChaveResponse);
 
-  rpc remover (RemoverChaveRequest) returns (google.protobuf.Empty){}
+  rpc remover (RemoverChaveRequest) returns (google.protobuf.Empty);
+
+  rpc buscar(BuscarChaveRequest) returns (BuscarChaveResponse);
+}
+
+message BuscarChaveRequest {
+  message BuscaPorPixId{
+    string idChave = 1;
+    string idCliente = 2;
+  }
+
+  oneof busca {
+    BuscaPorPixId pixId = 1;
+    string chave = 2;
+  }
+}
+
+message BuscarChaveResponse {
+  message ChaveInfo {
+    message ContaInfo {
+      TipoConta tipo = 1;
+      string instituicao = 2;
+      string titularNome = 3;
+      string titularCpf = 4;
+      string agencia = 5;
+      string conta = 6;
+    }
+
+    TipoChave tipo = 1;
+    string chave = 2;
+    ContaInfo conta = 3;
+    google.protobuf.Timestamp criadaEm = 4;
+  }
+
+  string idCliente = 1;
+  string idPix = 2;
+  ChaveInfo chave = 3;
 }
 
 message RemoverChaveRequest{
-  string id_chave = 1;
-  string id_cliente = 2;
+  string idChave = 1;
+  string idCliente = 2;
 }
 
 enum TipoConta {
@@ -33,12 +70,12 @@ enum TipoChave {
 }
 
 message CadastrarChaveRequest {
-  string id_cliente = 1;
-  TipoChave tipo_chave = 2;
+  string idCliente = 1;
+  TipoChave tipoChave = 2;
   string chave = 3;
-  TipoConta tipo_conta = 4;
+  TipoConta tipoConta = 4;
 }
 
 message CadastrarChaveResponse {
-  string pix_id = 1;
+  string pixId = 1;
 }

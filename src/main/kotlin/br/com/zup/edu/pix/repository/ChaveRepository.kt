@@ -9,4 +9,5 @@ import java.util.*
 interface ChaveRepository: JpaRepository<Chave, UUID>{
     fun existsByChave(chave: String?): Boolean
     fun findByIdAndIdCliente(id: UUID, idCliente: UUID): Optional<Chave>
+    fun findByChave(chave: String): Optional<Chave>
 }
