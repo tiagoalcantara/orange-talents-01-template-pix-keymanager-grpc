@@ -1,6 +1,6 @@
 micronaut:
   application:
-    name: pixKeyManagerGrpc
+    name: ${APP_NAME:pixKeyManagerGrpc}
 
 grpc:
   server:

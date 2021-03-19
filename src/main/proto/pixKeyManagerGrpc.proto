@@ -11,9 +11,33 @@ import "google/protobuf/timestamp.proto";
 service PixKeyManagerService {
   rpc cadastrar (CadastrarChaveRequest) returns (CadastrarChaveResponse);
 
+  /*
+    COMENTÁRIO SOBRE O EMPTY
+    Por questão de boas práticas, pode ser mais adequado declarar uma message vazia
+    no lugar do empty, para facilitar possíveis alterações futuras sem quebrar
+    nosso código.
+  */
   rpc remover (RemoverChaveRequest) returns (google.protobuf.Empty);
 
   rpc buscar(BuscarChaveRequest) returns (BuscarChaveResponse);
+
+  rpc listar(ListarChaveRequest) returns (ListarChaveResponse);
+}
+
+message ListarChaveRequest {
+  string idCliente = 1;
+}
+
+message ListarChaveResponse {
+  message ListagemInfo {
+    string idPix = 1;
+    TipoChave tipoChave = 2;
+    string chave = 3;
+    TipoConta tipoConta = 4;
+    google.protobuf.Timestamp criadaEm = 5;
+  }
+  string idCliente = 2;
+  repeated ListagemInfo chaves = 1;
 }
 
 message BuscarChaveRequest {
